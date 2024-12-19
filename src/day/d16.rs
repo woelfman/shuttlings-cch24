@@ -97,20 +97,16 @@ async fn decode_(body: String) -> Result<Response, StatusCode> {
     let token = decode::<Value>(&body, &decoding_key, &validation);
 
     match token {
-        Ok(token) => {
-            Ok(Response::builder()
-                .status(StatusCode::OK)
-                .body(
-                    serde_json::to_string(&token.claims)
-                        .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?
-                        .into(),
-                )
-                .unwrap())
-        }
+        Ok(token) => Ok(Response::builder()
+            .status(StatusCode::OK)
+            .body(
+                serde_json::to_string(&token.claims)
+                    .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?
+                    .into(),
+            )
+            .unwrap()),
         Err(err) => match err.kind() {
-            jsonwebtoken::errors::ErrorKind::InvalidSignature => {
-                Err(StatusCode::UNAUTHORIZED)
-            }
+            jsonwebtoken::errors::ErrorKind::InvalidSignature => Err(StatusCode::UNAUTHORIZED),
             _ => Err(StatusCode::BAD_REQUEST),
         },
     }
