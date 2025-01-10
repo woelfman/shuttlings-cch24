@@ -14,8 +14,8 @@ pub fn get_routes() -> Router {
     Router::new()
         .nest_service("/assets/", ServeDir::new("assets"))
         .route("/23/star", get(star))
-        .route("/23/present/:color", get(present))
-        .route("/23/ornament/:state/:n", get(ornament))
+        .route("/23/present/{color}", get(present))
+        .route("/23/ornament/{state}/{n}", get(ornament))
         .route("/23/lockfile", post(lockfile))
 }
 

@@ -28,9 +28,9 @@ pub fn get_routes(pool: PgPool) -> Router {
 
     Router::new()
         .route("/19/reset", post(reset))
-        .route("/19/cite/:id", get(cite))
-        .route("/19/remove/:id", delete(remove))
-        .route("/19/undo/:id", put(undo))
+        .route("/19/cite/{id}", get(cite))
+        .route("/19/remove/{id}", delete(remove))
+        .route("/19/undo/{id}", put(undo))
         .route("/19/draft", post(draft))
         .route("/19/list", get(list))
         .with_state(state)

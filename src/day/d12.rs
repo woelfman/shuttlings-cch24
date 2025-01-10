@@ -18,7 +18,7 @@ pub fn get_routes() -> Router {
     Router::new()
         .route("/12/board", get(board))
         .route("/12/reset", post(reset))
-        .route("/12/place/:team/:column", post(place))
+        .route("/12/place/{team}/{column}", post(place))
         .route("/12/random-board", get(random_board))
         .with_state(state)
 }
