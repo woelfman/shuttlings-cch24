@@ -5,7 +5,7 @@ edition = "2021"
 
 [dependencies]
 axum = { version = "0.8.0", features = ["multipart"] }
-cargo-manifest = "0.17.0"
+cargo-manifest = "0.18.0"
 handlebars = "6.2.0"
 jsonwebtoken = "9.3.0"
 leaky-bucket = "1.1.2"
