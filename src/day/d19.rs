@@ -9,7 +9,7 @@ use axum::{
     routing::{delete, get, post, put},
     Json, Router,
 };
-use rand::{distributions::Alphanumeric, Rng};
+use rand::{distr::Alphanumeric, Rng};
 use sea_query::{ColumnDef, Expr, Iden, Order, PostgresQueryBuilder, Query, Table};
 use sea_query_binder::SqlxBinder;
 use serde::{Deserialize, Serialize};
@@ -217,7 +217,7 @@ struct PageQuery {
 }
 
 fn generate_token() -> String {
-    rand::thread_rng()
+    rand::rng()
         .sample_iter(&Alphanumeric)
         .take(16)
         .map(char::from)

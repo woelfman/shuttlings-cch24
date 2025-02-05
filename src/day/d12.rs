@@ -154,7 +154,7 @@ impl Grid {
         let mut grid = Grid::default();
         for row in 0..4 {
             for col in 0..4 {
-                grid.0[row][col] = if seed.gen::<bool>() {
+                grid.0[row][col] = if seed.random::<bool>() {
                     Item::Cookie
                 } else {
                     Item::Milk
